@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
-"ServiceKeepAlive"=dword:0
 "DisableAntiSpyware"=dword:1
 "DisableAntiVirus"=dword:1
+"ServiceKeepAlive"=dword:1
