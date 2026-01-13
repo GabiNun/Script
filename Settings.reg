@@ -12,6 +12,11 @@ Windows Registry Editor Version 5.00
 "DisableAntiVirus"=dword:1
 "ServiceKeepAlive"=dword:1
 
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSpeed"=dword:0
+"MouseThreshold1"=dword:0
+"MouseThreshold2"=dword:0
+
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "AppsUseLightTheme"=dword:0
 "SystemUsesLightTheme"=dword:0
