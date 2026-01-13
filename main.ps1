@@ -47,6 +47,7 @@ $Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
 
 Get-Process *Edge*,SearchHost | Stop-Process -Force
+Sleep 1
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 Remove-Item C:\ProgramData\Microsoft\EdgeUpdate -Recurse -Force
 sc.exe delete edgeupdate
