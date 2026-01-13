@@ -1,4 +1,4 @@
-irm github.com/GabiNun/Scripts/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
+irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
 
 winget source remove msstore
 winget install glazewm
