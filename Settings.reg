@@ -6,6 +6,7 @@ Windows Registry Editor Version 5.00
 "ShowSystrayDateTimeValueName"=dword:0
 "TaskbarBadges"=dword:0
 "TaskbarFlashing"=dword:0
+"ShowStatusbar"=dword:0
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "DisableAntiSpyware"=dword:1
