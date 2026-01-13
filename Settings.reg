@@ -60,7 +60,7 @@ Windows Registry Editor Version 5.00
 "Wallpaper"="C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace]
-"645FF040-5081-101B-9F08-00AA002F954E"-
+"{645FF040-5081-101B-9F08-00AA002F954E}"-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\BootAnimation]
 "DisableStartupSound"=dword:0
