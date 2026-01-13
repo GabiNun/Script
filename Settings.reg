@@ -46,6 +46,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell]
 "ExecutionPolicy"="Unrestricted"
 
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows]
+"DisableSearchBoxSuggestions"=dword:1
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
 "HibernateEnabled"=dword:0
 
