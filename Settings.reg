@@ -22,6 +22,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 "Glazewm"="C:\\Program Files\\glzr.io\\GlazeWM\\glazewm.exe"
+"SecurityHealth"=-
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
 "AppCaptureEnabled"=dword:0
