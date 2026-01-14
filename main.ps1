@@ -42,6 +42,13 @@ Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatc
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart
 C:\Windows\System32\OneDriveSetup /uninstall
 
-irm gist.github.com/GabiNun/2b0c253e5260790df8955d4c048e6288/raw/Edge.ps1 | iex
+New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
+& "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
+
+Get-Process SearchHost,*Edge* | Stop-Process -Force
+Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
+
+sc.exe delete edgeupdate
+sc.exe delete edgeupdatem
 
 Unregister-ScheduledTask -Confirm:$False
