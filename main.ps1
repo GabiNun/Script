@@ -4,10 +4,10 @@ irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s S
 
 winget source remove msstore | Out-Null
 
-irm github.com/GabiNun/Script/raw/main/glazewm.exe -Out C:\Windows\glazewm.exe
-irm github.com/GabiNun/Script/raw/main/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
-irm github.com/GabiNun/Script/raw/main/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
- 
+irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
+irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
+irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
+
 New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force | Out-Null
 
 Remove-Item "$Home\OneDrive","C:\Windows.old" -Recurse -Force
