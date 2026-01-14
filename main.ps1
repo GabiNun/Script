@@ -1,6 +1,6 @@
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
 
-winget source remove msstore
+winget source remove msstore | Out-Null
 
 $ProgressPreference = 0
 irm github.com/GabiNun/Script/raw/main/glazewm.exe -Out C:\Windows\glazewm.exe
