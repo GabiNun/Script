@@ -8,7 +8,7 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glaze
 irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 
-New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force | Out-Null
+New-Item '.glzr\glazewm\config.yaml' -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force | Out-Null
 
 Remove-Item "$Home\OneDrive","C:\Windows.old" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
