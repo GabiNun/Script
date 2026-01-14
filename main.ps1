@@ -52,4 +52,4 @@ Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 Remove-Item C:\ProgramData\Microsoft\EdgeUpdate -Recurse -Force
 sc.exe delete edgeupdate
 sc.exe delete edgeupdatem
-Unregister-ScheduledTask *Edge* -Confirm:$False
+Unregister-ScheduledTask -Confirm:$False
