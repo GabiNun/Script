@@ -33,6 +33,7 @@ powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749e
 powercfg /change monitor-timeout-ac 60
 
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
+
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
@@ -41,16 +42,6 @@ Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatc
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart
 C:\Windows\System32\OneDriveSetup /uninstall
 
-New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
-& "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
+irm gist.github.com/GabiNun/2b0c253e5260790df8955d4c048e6288/raw/Edge.ps1 | iex
 
-$Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
-
-Get-Process *Edge*,SearchHost | Stop-Process -Force
-Sleep 1
-Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
-Remove-Item C:\ProgramData\Microsoft\EdgeUpdate -Recurse -Force
-sc.exe delete edgeupdate
-sc.exe delete edgeupdatem
 Unregister-ScheduledTask -Confirm:$False
