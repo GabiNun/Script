@@ -2,6 +2,7 @@ irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s S
 
 winget source remove msstore
 
+$ProgressPreference = 0
 irm https://github.com/GabiNun/Script/raw/main/glazewm.exe -Out C:\Windows\glazewm.exe
 irm https://github.com/GabiNun/Script/raw/main/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm https://github.com/GabiNun/Script/raw/main/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
