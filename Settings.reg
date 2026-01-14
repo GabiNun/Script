@@ -27,7 +27,7 @@ Windows Registry Editor Version 5.00
 "PromptOnSecureDesktop"=dword:0
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
-"Glazewm"="C:\\Program Files\\glzr.io\\GlazeWM\\glazewm.exe"
+"Glazewm"="C:\\Windows\\glazewm.exe"
 "SecurityHealth"=-
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
