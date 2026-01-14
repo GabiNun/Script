@@ -7,7 +7,7 @@ irm github.com/GabiNun/Script/raw/main/glazewm.exe -Out C:\Windows\glazewm.exe
 irm github.com/GabiNun/Script/raw/main/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
  
-New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force
+New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force | Out-Null
 
 Remove-Item "$Home\OneDrive","C:\Windows.old" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
@@ -36,7 +36,7 @@ powercfg /change monitor-timeout-ac 60
 
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 
-New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
+New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
 & "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
