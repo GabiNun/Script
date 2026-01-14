@@ -40,8 +40,9 @@ Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatc
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart
 C:\Windows\System32\OneDriveSetup /uninstall
 
+$Version = (AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
-& "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
+& "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
 
 $Appx = (Get-AppxPackage *EdgeDevToolsClient).PackageFullName
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force;Remove-AppxPackage $Appx
