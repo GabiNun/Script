@@ -1,8 +1,10 @@
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
 
 winget source remove msstore
-winget install glazewm
-winget remove zebar
+
+irm https://github.com/GabiNun/Script/raw/main/glazewm.exe -Out C:\Windows\glazewm.exe
+irm https://github.com/GabiNun/Script/raw/main/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
+irm https://github.com/GabiNun/Script/raw/main/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
  
 New-Item .glzr\glazewm\config.yaml -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force
 
