@@ -48,7 +48,7 @@ Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatc
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
 
-Get-Process SearchHost,Setup,*Edge* | Stop-Process -Force
+Get-Process SearchHost,Setup,*Edge* | Stop-Process -Force -ErrorAction Ignore
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 
 sc.exe delete edgeupdate | Out-Null
