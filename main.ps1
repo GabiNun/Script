@@ -44,13 +44,13 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 
 Stop-Process -Name Widgets -ErrorAction Ignore
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
-Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
 
 Get-Process SearchHost,Setup,*Edge* | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 
-sc.exe delete edgeupdate
-sc.exe delete edgeupdatem
+sc.exe delete edgeupdate | Out-Null
+sc.exe delete edgeupdatem | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
