@@ -1,4 +1,4 @@
-$ProgressPreference = 0
+$ProgressPreference = 'SilentlyContinue'
 
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
 
