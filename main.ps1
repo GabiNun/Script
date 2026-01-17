@@ -10,9 +10,8 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windo
 
 New-Item '.glzr\glazewm\config.yaml' -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force | Out-Null
 
-Remove-Item "$Home\OneDrive","C:\Windows.old" -Recurse -Force
+Remove-Item "C:\ProgramData\Microsoft OneDrive","$Env:OneDrive" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
-Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
@@ -42,15 +41,15 @@ New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftE
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
-Stop-Process -Name Widgets -ErrorAction Ignore
+Stop-Process -Name Widgets -ErrorAction SilentlyContinue
 Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
 
-Get-Process SearchHost,Setup,*Edge* | Stop-Process -Force -ErrorAction Ignore
+Get-Process SearchHost,Setup,*Edge* | Stop-Process -Force -ErrorAction SilentlyContinue
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 
 sc.exe delete edgeupdate | Out-Null
 sc.exe delete edgeupdatem | Out-Null
 
-Unregister-ScheduledTask -Confirm:$False
+Unregister-ScheduledTask -Confirm:$False -ErrorAction SilentlyContinue
