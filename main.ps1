@@ -55,4 +55,6 @@ C:\Windows\System32\OneDriveSetup /uninstall
 
 Unregister-ScheduledTask -Confirm:$False
 
+Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
