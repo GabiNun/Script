@@ -55,5 +55,4 @@ C:\Windows\System32\OneDriveSetup /uninstall
 
 Unregister-ScheduledTask -Confirm:$False
 
-Set-CimInstance -ClassName Win32_ComputerSystem -Property @{AutomaticManagedPagefile = $false}
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
