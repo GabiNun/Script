@@ -31,6 +31,7 @@ attrib +h Documents
 attrib +h Contacts
 attrib -h AppData
 
+powercfg /h off
 powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
