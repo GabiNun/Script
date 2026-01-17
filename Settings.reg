@@ -30,6 +30,10 @@ Windows Registry Editor Version 5.00
 "Glazewm"="C:\\Windows\\glazewm.exe"
 "SecurityHealth"=-
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"AutomaticManagedPagefile"=dword:0
+"PagingFiles"=""
+
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
 "AppCaptureEnabled"=dword:0
 
