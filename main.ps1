@@ -40,21 +40,20 @@ $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
 & "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
 
-$Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
-
-Stop-Process -Name Widgets -ErrorAction SilentlyContinue
-Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
-Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart | Out-Null
-C:\Windows\System32\OneDriveSetup /uninstall
-
-Get-Process SearchHost,Setup,*Edge* | Stop-Process -Force -ErrorAction SilentlyContinue
+Get-Process SearchHost,Widgets,Setup,*Edge* -ErrorAction SilentlyContinue | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 
 sc.exe delete edgeupdate | Out-Null
 sc.exe delete edgeupdatem | Out-Null
 
-Unregister-ScheduledTask -Confirm:$False -ErrorAction SilentlyContinue
+$Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
+New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
+
+Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart | Out-Null
+C:\Windows\System32\OneDriveSetup /uninstall
+
+Unregister-ScheduledTask -Confirm:$False
 
 Set-CimInstance -ClassName Win32_ComputerSystem -Property @{AutomaticManagedPagefile = $false}
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
