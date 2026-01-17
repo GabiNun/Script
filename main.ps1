@@ -54,3 +54,6 @@ sc.exe delete edgeupdate | Out-Null
 sc.exe delete edgeupdatem | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False -ErrorAction SilentlyContinue
+
+Set-CimInstance -ClassName Win32_ComputerSystem -Property @{AutomaticManagedPagefile = $false}
+Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
