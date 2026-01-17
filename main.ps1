@@ -10,8 +10,9 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windo
 
 New-Item '.glzr\glazewm\config.yaml' -Value (irm 'https://pastebin.com/raw/zGgVsPFm') -Force | Out-Null
 
-Remove-Item "C:\ProgramData\Microsoft OneDrive","$Env:OneDrive" -Recurse -Force
+Remove-Item "C:\Windows.old","$Home\OneDrive" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
+Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
