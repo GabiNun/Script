@@ -49,8 +49,8 @@ sc.exe delete edgeupdatem | Out-Null
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
-Powershell -Command 'foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {Remove-ProvisionedAppPackage -PackageName $Package -Online | Out-Null}'
-Powershell -Command 'Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|terminal'} | Remove-AppxPackage'
+powershell -Command "foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {Remove-ProvisionedAppPackage -PackageName $Package -Online | Out-Null}"
+powershell -Command "Get-AppxPackage | ? {!$_.IsFramework -and !$_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal'} | Remove-AppxPackage"
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-RemoteDesktopConnection -NoRestart | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
 
