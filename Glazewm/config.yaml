@@ -124,6 +124,9 @@ window_rules:
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1' }
 
+workspaces:
+  - name: '1'
+
 keybindings:
   - bindings: ["alt+w"]
     command: "exec 'C:\\Users\\User\\AppData\\Local\\Chromium\\Application\\chrome.exe'"
