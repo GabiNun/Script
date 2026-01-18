@@ -19,7 +19,6 @@ Windows Registry Editor Version 5.00
 "MouseThreshold2"=dword:0
 
 [HKEY_CURRENT_USER\Software\Microsoft\Accessibility]
-"CursorType"=dword:00000003
 "CursorColor"=dword:00000000
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
