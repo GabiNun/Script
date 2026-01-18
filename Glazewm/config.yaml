@@ -126,7 +126,3 @@ window_rules:
 
 workspaces:
   - name: '1'
-
-keybindings:
-  - bindings: ["alt+w"]
-    command: "exec 'C:\\Users\\User\\AppData\\Local\\Chromium\\Application\\chrome.exe'"
