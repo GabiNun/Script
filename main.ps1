@@ -38,7 +38,7 @@ powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749e
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
-& "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" --uninstall --system-level --force-uninstall --delete-profile
+Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile' -Wait
 
 Get-Process SearchHost,Widgets,Setup,*Edge* -ErrorAction SilentlyContinue | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
