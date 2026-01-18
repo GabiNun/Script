@@ -18,10 +18,6 @@ Windows Registry Editor Version 5.00
 "MouseThreshold1"=dword:0
 "MouseThreshold2"=dword:0
 
-[HKEY_CURRENT_USER\Software\Microsoft\Accessibility]
-"CursorScheme"=""
-"CursorColor"=dword:00000000
-
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize]
 "AppsUseLightTheme"=dword:0
 "SystemUsesLightTheme"=dword:0
@@ -41,6 +37,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "AutomaticManagedPagefile"=dword:0
 "PagingFiles"=""
+
+[HKEY_CURRENT_USER\Software\Microsoft\Accessibility]
+"CursorColor"=dword:0
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR]
 "AppCaptureEnabled"=dword:0
