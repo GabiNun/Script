@@ -1,10 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
-irm github.com/GabiNun/Script/raw/main/Defender.reg -Out Script.reg
-
-Register-ScheduledTask ti -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Env:Temp\Defender.reg") -User 'NT SERVICE\TrustedInstaller' | Out-Null
-Start-ScheduledTask ti
 
 winget source remove msstore | Out-Null
 
