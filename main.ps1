@@ -46,6 +46,7 @@ sc.exe delete edgeupdatem | Out-Null
 
 irm github.com/GabyNun/Disable-Defender/raw/main/Defender.ps1 | iex
 
+Stop-Process -Name Widgets
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
