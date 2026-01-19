@@ -8,10 +8,6 @@ Windows Registry Editor Version 5.00
 "TaskbarFlashing"=dword:0
 "ShowStatusbar"=dword:0
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
-"DisableAntiSpyware"=dword:1
-"ServiceKeepAlive"=dword:0
-
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"=dword:0
 "MouseThreshold1"=dword:0
@@ -25,10 +21,6 @@ Windows Registry Editor Version 5.00
 "ConsentPromptBehaviorAdmin"=dword:0
 "PromptOnSecureDesktop"=dword:0
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
-"Glazewm"="C:\\Windows\\glazewm.exe"
-"SecurityHealth"=-
-
 [HKEY_CURRENT_USER\Environment]
 "GLAZEWM_CONFIG_PATH"="C:\\Windows\\config.yaml"
 "OneDrive"=-
@@ -36,6 +28,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "AutomaticManagedPagefile"=dword:0
 "PagingFiles"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+"Glazewm"="C:\\Windows\\glazewm.exe"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Accessibility]
 "CursorColor"=dword:0
@@ -103,9 +98,4 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3]
 "Settings"=hex:30,00,00,00,fe,ff,ff,ff,03,00,00,00,03,00,00,00,30,00,00,00,30,00,00,00,00,00,00,00,08,04,00,00,80,07,00,00,38,04,00,00,60,00,00,00,01,00,00,00
 
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WdBoot]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\webthreatdefsvc]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\webthreatdefusersvc]
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update]
