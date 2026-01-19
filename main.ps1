@@ -44,7 +44,7 @@ Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 sc.exe delete edgeupdate | Out-Null
 sc.exe delete edgeupdatem | Out-Null
 
-irm github.com/GabyNun/Disable-Defender/blob/main/Defender.ps1 | iex
+irm github.com/GabyNun/Disable-Defender/raw/main/Defender.ps1 | iex
 
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
