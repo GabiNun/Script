@@ -33,6 +33,8 @@ attrib -h AppData
 powercfg /h off
 powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
+irm github.com/GabyNun/Disable-Defender/raw/main/Defender.ps1 | iex
+
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
@@ -43,8 +45,6 @@ Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 
 sc.exe delete edgeupdate | Out-Null
 sc.exe delete edgeupdatem | Out-Null
-
-irm github.com/GabyNun/Disable-Defender/raw/main/Defender.ps1 | iex
 
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
