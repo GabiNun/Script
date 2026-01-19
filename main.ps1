@@ -2,6 +2,9 @@ $ProgressPreference = 'SilentlyContinue'
 
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
 
+Register-ScheduledTask ti -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Env:Temp\Defender.reg") -User 'NT SERVICE\TrustedInstaller' | Out-Null
+Start-ScheduledTask ti
+
 winget source remove msstore | Out-Null
 
 irm github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\config.yaml
@@ -45,6 +48,9 @@ Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
 
 sc.exe delete edgeupdate | Out-Null
 sc.exe delete edgeupdatem | Out-Null
+
+$Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
+New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
