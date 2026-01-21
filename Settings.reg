@@ -27,7 +27,7 @@ Windows Registry Editor Version 5.00
 "PromptOnSecureDesktop"=dword:0
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
-"Glazewm"="C:\\Windows\\glazewm.exe"
+"Glazewm"="glazewm.exe"
 "SecurityHealth"=-
 
 [HKEY_CURRENT_USER\Environment]
