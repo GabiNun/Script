@@ -49,7 +49,7 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName ) {Remove-ProvisionedAppPackage -PackageName $Package -Online | Out-Null}
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
-Disable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
+Enable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
 
 Unregister-ScheduledTask -Confirm:$False
