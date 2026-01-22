@@ -11,7 +11,6 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windo
 
 Remove-Item "$Home\OneDrive","C:\Windows.old","Script.reg" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
-Remove-Item "C:\ProgramData\Microsoft OneDrive" -Recurse
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
@@ -49,7 +48,8 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName ) {Remove-ProvisionedAppPackage -PackageName $Package -Online | Out-Null}
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
-Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection,Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
+Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
+Disable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
 C:\Windows\System32\OneDriveSetup /uninstall
 
 Unregister-ScheduledTask -Confirm:$False
