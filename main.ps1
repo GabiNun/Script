@@ -8,6 +8,7 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\confi
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
 irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
+irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
 Remove-Item "$Home\OneDrive","Script.reg" -Recurse -Force
@@ -32,10 +33,7 @@ attrib -h AppData
 powercfg /h off
 powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
-$Path = (Get-ChildItem "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe").FullName
-  
-New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
-Start-Process $Path -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile'
+Start-Process UninstallEdge.exe -Wait
 
 Get-Process SearchHost,Widgets,Setup,*Edge* -ErrorAction SilentlyContinue | Stop-Process -Force
 Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
