@@ -9,8 +9,8 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glaze
 irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 
-Remove-Item "$Home\OneDrive","C:\Windows.old","Script.reg" -Recurse -Force
 Remove-Item "C:\Program Files (x86)\Microsoft.NET" -Recurse
+Remove-Item "$Home\OneDrive","Script.reg" -Recurse -Force
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
