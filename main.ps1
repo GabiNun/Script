@@ -32,12 +32,6 @@ powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749e
 
 Start-Process UninstallEdge.exe -Wait
 
-Get-Process SearchHost,Widgets,Setup,*Edge* -ErrorAction SilentlyContinue | Stop-Process -Force
-Remove-Item "$Env:ProgramFiles (x86)\Microsoft" -Recurse -Force
-
-sc.exe delete edgeupdate | Out-Null
-sc.exe delete edgeupdatem | Out-Null
-
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
