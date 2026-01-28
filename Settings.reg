@@ -38,6 +38,9 @@ Windows Registry Editor Version 5.00
 "AutomaticManagedPagefile"=dword:0
 "PagingFiles"=""
 
+[HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MsMpEng.exe]
+"Debugger"="cmd.exe /c exit"
+
 [HKEY_CURRENT_USER\Software\Microsoft\Accessibility]
 "CursorColor"=dword:0
 
