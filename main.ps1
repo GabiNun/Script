@@ -10,6 +10,11 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
+Start-Process C:\Windows\glazewm.exe
+Start-Process UninstallEdge.exe
+
+Remove-Item "UninstallEdge.exe","$Home\OneDrive","Script.reg" -Recurse -Force
+
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
@@ -30,8 +35,6 @@ attrib -h AppData
 powercfg /h off
 powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
-Start-Process UninstallEdge.exe
-
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
@@ -45,5 +48,3 @@ Unregister-ScheduledTask -Confirm:$False
 Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
-
-Remove-Item "UninstallEdge.exe","$Home\OneDrive","Script.reg" -Recurse -Force
