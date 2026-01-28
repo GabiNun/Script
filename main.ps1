@@ -46,5 +46,3 @@ Unregister-ScheduledTask -Confirm:$False
 Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
-
-Remove-Item "UninstallEdge.exe","$Home\OneDrive","Script.reg" -Recurse -Force
