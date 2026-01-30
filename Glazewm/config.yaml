@@ -71,11 +71,5 @@ window_behavior:
 
       shown_on_top: false
 
-window_rules:
-  - commands: ['ignore']
-    match:
-      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
-        window_class: { regex: 'Chrome_WidgetWin_1' }
-
 workspaces:
   - name: '1'
