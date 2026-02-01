@@ -10,7 +10,7 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
-Start-Process C:\Windows\System32\OneDriveSetup /uninstall
+Start-Process OneDriveSetup.exe /uninstall
 Start-Process UninstallEdge.exe
 Start-Process glazewm.exe
 
