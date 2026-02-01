@@ -44,9 +44,12 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
     dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
 }
 
-Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
-Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
-Enable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
+foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled).FeatureName) {
+    Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
+}
+
+Get-AppxPackage | Where-Object { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
+Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
 
