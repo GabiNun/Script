@@ -40,7 +40,10 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 Stop-Process -Name Widgets,GameBar,SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
-foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName ) {Remove-ProvisionedAppPackage -PackageName $Package -Online | Out-Null}
+foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
+    dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
+}
+
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
 Enable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
