@@ -45,7 +45,7 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
 }
 
 foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled).FeatureName) {
-    Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null -ErrorAction SilentlyContinue
+    Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
 Get-AppxPackage | Where-Object { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
