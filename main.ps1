@@ -11,7 +11,7 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windo
 irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
 Start-Process OneDriveSetup.exe /uninstall
-Start-Process UninstallEdge.exe
+Start-Process UninstallEdge.exe -Wait
 Start-Process glazewm.exe
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
