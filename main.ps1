@@ -37,8 +37,10 @@ powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749e
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
-Stop-Process -Name Widgets,GameBar,*Edge* -Force -ErrorAction SilentlyContinue
+Stop-Process *Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
+
+Stop-Process -Name Widgets,GameBar -ErrorAction SilentlyContinue
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName ) {Remove-ProvisionedAppPackage -PackageName $Package -Online | Out-Null}
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
