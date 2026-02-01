@@ -10,6 +10,7 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
+Start-Process C:\Windows\System32\OneDriveSetup /uninstall
 Start-Process UninstallEdge.exe
 Start-Process glazewm.exe
 
@@ -43,7 +44,6 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName ) {Remove-P
 Get-AppxPackage | Where { -not $_.IsFramework -and -not $_.NonRemovable -and $_.Name -notmatch 'Notepad|Terminal' } | Remove-AppxPackage
 Disable-WindowsOptionalFeature -FeatureName Microsoft-RemoteDesktopConnection -NoRestart -Online | Out-Null
 Enable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -NoRestart -Online | Out-Null
-C:\Windows\System32\OneDriveSetup /uninstall
 
 Unregister-ScheduledTask -Confirm:$False
 
