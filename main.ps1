@@ -41,7 +41,7 @@ Stop-Process -Name Widgets,GameBar,SearchHost,*Edge* -Force -ErrorAction Silentl
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
-    dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
+    Dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
 }
 
 foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled).FeatureName) {
