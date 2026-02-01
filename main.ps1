@@ -44,7 +44,7 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
     Dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
 }
 
-foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled).FeatureName) {
+foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled | Where-Object FeatureName -notmatch 'Defender').FeatureName) {
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
