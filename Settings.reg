@@ -31,7 +31,7 @@ Windows Registry Editor Version 5.00
 "SecurityHealth"=-
 
 [HKEY_CURRENT_USER\Environment]
-"GLAZEWM_CONFIG_PATH"="C:\\Windows\\config.yaml"
+"GLAZEWM_CONFIG_PATH"="config.yaml"
 "OneDrive"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
