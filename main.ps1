@@ -50,7 +50,7 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
 }
 
 foreach ($Package in $Packages) {
-    Get-AppxPackage -Name $Package | Remove-AppxPackage -AllUsers
+    Get-AppxPackage -Name $Package | Remove-AppxPackage
 }
 
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
