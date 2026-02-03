@@ -62,6 +62,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CDP]
 "CdpSessionUserAuthzPolicy"=dword:0
 
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CrossDeviceResume\Configuration]
+"IsResumeAllowed"=dword:0
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "ShowTaskViewButton"=dword:0
 
