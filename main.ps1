@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-irm pastebin.com/raw/wGXdMv6G | iex
+irm pastebin.com/raw/EJLB4tML | iex
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
 
 winget source remove msstore | Out-Null
