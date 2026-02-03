@@ -48,7 +48,7 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
-Get-AppxPackage | Where-Object !IsFramework | Where-Object !NonRemovable | Where-Object Name -notmatch 'Notepad|Terminal' | Remove-AppxPackage
+Get-AppxPackage | Where-Object IsFramework -eq 'False' | Where-Object NonRemovable -eq 'False' | Where-Object Name -notmatch 'Notepad|Terminal' | Remove-AppxPackage
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
