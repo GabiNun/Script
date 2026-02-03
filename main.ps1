@@ -56,3 +56,6 @@ Unregister-ScheduledTask -Confirm:$False
 Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
+
+takeown /f C:\Windows\System32\SmartScreen.exe | Out-Null
+icacls C:\Windows\System32\SmartScreen.exe /deny User:RX | Out-Null
