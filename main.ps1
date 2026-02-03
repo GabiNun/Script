@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-irm pastebin.com/raw/psraAKVM | iex
+irm pastebin.com/raw/AkM8hpQY | iex
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
 
 winget source remove msstore | Out-Null
@@ -37,7 +37,7 @@ powercfg /h off
 powercfg /setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName).Sid.Value
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
+New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
 
 Stop-Process -Name ApplicationFrameHost,Widgets,GameBar,SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
