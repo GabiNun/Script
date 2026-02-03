@@ -62,12 +62,5 @@ Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
 
-takeown /f C:\Windows\System32\AggregatorHost.exe | Out-Null
 takeown /f C:\Windows\System32\SmartScreen.exe | Out-Null
-takeown /f C:\Windows\System32\ctfmon.exe | Out-Null
-takeown /f C:\Windows\System32\LsaIso.exe | Out-Null
-
-icacls C:\Windows\System32\AggregatorHost.exe /deny User:RX | Out-Null
 icacls C:\Windows\System32\SmartScreen.exe /deny User:RX | Out-Null
-icacls C:\Windows\System32\ctfmon.exe /deny User:RX | Out-Null
-icacls C:\Windows\System32\LsaIso.exe /deny User:RX | Out-Null
