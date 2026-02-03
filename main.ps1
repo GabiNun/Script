@@ -39,7 +39,7 @@ $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName;$Sid = (glu $Env:UserName
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null;Remove-AppxPackage $Appx
 
 Stop-Process -Name ApplicationFrameHost,Widgets,GameBar,SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
-Remove-Item "C:\Program Files (x86)\Microsoft*" -Recurse -Force
+Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
     Dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
