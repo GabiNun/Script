@@ -1,6 +1,5 @@
 $ProgressPreference = 'SilentlyContinue'
 
-irm pastebin.com/raw/AkM8hpQY  | iex
 irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
 
 winget source remove msstore | Out-Null
@@ -41,7 +40,7 @@ $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
 
-Stop-Process -Name ApplicationFrameHost,Widgets,GameBar,SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
+Stop-Process -Name SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
@@ -52,6 +51,7 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
+irm pastebin.com/raw/BiVeKbYf | iex
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
