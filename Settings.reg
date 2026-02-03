@@ -90,7 +90,7 @@ Windows Registry Editor Version 5.00
 "ExcludeWUDriversInQualityUpdate"=dword:1
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
-"Wallpaper"="C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg"
+"Wallpaper"="C:\\Windows\\Web\\Wallpaper\\ThemeD\\img32.jpg"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
 "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:1
