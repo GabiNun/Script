@@ -66,10 +66,8 @@ Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
 
 takeown /f C:\Windows\System32\AggregatorHost.exe | Out-Null
 takeown /f C:\Windows\System32\SmartScreen.exe | Out-Null
-takeown /f C:\Windows\System32\ctfmon.exe | Out-Null
 takeown /f C:\Windows\System32\LsaIso.exe | Out-Null
 
 icacls C:\Windows\System32\AggregatorHost.exe /deny Administrators:F | Out-Null
 icacls C:\Windows\System32\SmartScreen.exe /deny Administrators:F | Out-Null
-icacls C:\Windows\System32\ctfmon.exe /deny Administrators:F | Out-Null
 icacls C:\Windows\System32\LsaIso.exe /deny Administrators:F | Out-Null
