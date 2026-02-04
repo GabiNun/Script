@@ -29,3 +29,9 @@ powercfg /Hibernate Off
 powercfg /SetActive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
 winget source remove msstore | Out-Null
+
+Unregister-ScheduledTask -Confirm:$False
+
+Disable-ComputerRestore $Env:SystemDrive
+Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
