@@ -7,14 +7,16 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
-RegEdit /s Script.reg
-Stop-Process -Name explorer
+Regedit /s Script.reg
+Stop-Process -Name Explorer
 
 winget source remove msstore | Out-Null
 
 Start-Process UninstallEdge.exe -Wait
 OneDriveSetup /uninstall
 glazewm
+
+Remove-Item UninstallEdge.exe,Script.reg
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Steps Recorder.lnk"
