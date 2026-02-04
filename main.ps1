@@ -13,10 +13,10 @@ Stop-Process -Name Explorer
 
 winget source remove msstore | Out-Null
 
-Start-Process UninstallEdge.exe -Wait
 OneDriveSetup /uninstall
 glazewm
 
+Start-Process UninstallEdge.exe -Wait
 Remove-Item UninstallEdge.exe,Script.reg
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
