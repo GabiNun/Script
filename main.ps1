@@ -8,10 +8,8 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\confi
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
 irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
-irm github.com/GabiNun/UninstallEdge/releases/latest/download/UninstallEdge.exe -Out UninstallEdge.exe
 
 Start-Process OneDriveSetup.exe /uninstall
-Start-Process UninstallEdge.exe -Wait
 Start-Process glazewm.exe
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
@@ -39,6 +37,9 @@ $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
 $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
+
+New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force
+Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe" -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile' -Wait
 
 Stop-Process -Name SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
