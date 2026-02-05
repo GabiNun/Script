@@ -91,7 +91,9 @@ $Packages =
 $PackageManager = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
 foreach ($Package in $Packages) {
-    $PackageManager.RemovePackageAsync($PackageManager.FindPackageForUser("", $Package).Id.FullName) | Out-Null
+    foreach ($pkg in $PackageManager.FindPackages() | Where-Object { $_.Id.Name -eq $Package }) {
+        $PackageManager.RemovePackageAsync($pkg.Id.FullName) | Out-Null
+    }
 }
 
 Unregister-ScheduledTask -Confirm:$False
