@@ -90,9 +90,10 @@ $Packages =
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
-Stop-Process -Name Widgets
+$PackageManager = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
+
 foreach ($Package in $Packages) {
-    Get-AppxPackage $Package | Remove-AppxPackage
+    $PackageManager.RemovePackageAsync($PackageManager.FindPackageForUser("", $Package).Id.FullName) | Out-Null
 }
 
 Unregister-ScheduledTask -Confirm:$False
