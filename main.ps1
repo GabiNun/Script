@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
+irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Remove-Item Script.reg
 
 winget source remove msstore | Out-Null
 
@@ -111,3 +111,5 @@ icacls C:\Windows\System32\AggregatorHost.exe /deny Administrators:F | Out-Null
 icacls C:\Windows\System32\SmartScreen.exe /deny Administrators:F | Out-Null
 icacls C:\Windows\System32\NgcIso.exe /deny Administrators:F | Out-Null
 icacls C:\Windows\System32\LsaIso.exe /deny Administrators:F | Out-Null
+
+Stop-Process -Name Explorer
