@@ -96,7 +96,6 @@ foreach ($Package in $Packages) { Get-AppxPackage $Package | Remove-AppxPackage 
 
 Unregister-ScheduledTask -Confirm:$False
 
-Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
 
