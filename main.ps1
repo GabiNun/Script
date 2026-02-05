@@ -54,8 +54,6 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
 }
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
-$packageManager = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType='WindowsRuntime']::new()
-
 $Packages =
     'Microsoft.WindowsCalculator',
     'Microsoft.WindowsCamera',
@@ -92,10 +90,9 @@ $Packages =
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
+Stop-Process -Name Widgets
 foreach ($Package in $Packages) {
-    foreach ($PackageName in $packageManager.FindPackages() | Where-Object Id.Name -eq $Package) {
-        $packageManager.RemovePackageAsync($PackageName.Id.FullName) | Out-Null
-    }
+    Get-AppxPackage $Package | Remove-AppxPackage
 }
 
 Unregister-ScheduledTask -Confirm:$False
