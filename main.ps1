@@ -32,7 +32,7 @@ attrib +h OneDrive
 attrib -h AppData
 
 powercfg /Hibernate Off
-powercfg /SetActive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
+powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
 $Sid = (Get-LocalUser $Env:UserName).Sid.Value
