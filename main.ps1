@@ -46,12 +46,10 @@ Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
-    Dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /Quiet /NoRestart | Out-Null
+    Dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /NoRestart | Out-Null
 }
 
-foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -eq Enabled | Where-Object FeatureName -notmatch 'Defender').FeatureName) {
-    Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
-}
+Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
 $Packages =
