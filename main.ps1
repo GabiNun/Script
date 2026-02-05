@@ -53,8 +53,6 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
-Stop-Process -Name ApplicationFrameHost,Widgets
-
 $Packages =
     'Microsoft.WindowsCalculator',
     'Microsoft.WindowsCamera',
@@ -90,6 +88,8 @@ $Packages =
     'Microsoft.XboxGamingOverlay',
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
+
+Stop-Process -Name ApplicationFrameHost,Widgets
 
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
