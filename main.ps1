@@ -53,7 +53,44 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
-irm pastebin.com/raw/j8eALn0x | iex
+Stop-Process -Name ApplicationFrameHost,Widgets
+
+$Packages =
+    'Microsoft.WindowsCalculator',
+    'Microsoft.WindowsCamera',
+    'Microsoft.WindowsAlarms',
+    'Microsoft.WindowsFeedbackHub',
+    'Microsoft.ZuneMusic',
+    'Microsoft.MicrosoftOfficeHub',
+    'Microsoft.BingSearch',
+    'Clipchamp.Clipchamp',
+    'Microsoft.BingNews',
+    'MSTeams',
+    'Microsoft.WindowsNotepad',
+    'Microsoft.Todos',
+    'Microsoft.OutlookForWindows',
+    'Microsoft.Paint',
+    'Microsoft.Windows.Photos',
+    'Microsoft.PowerAutomateDesktop',
+    'MicrosoftCorporationII.QuickAssist',
+    'Microsoft.ScreenSketch',
+    'Microsoft.MicrosoftSolitaireCollection',
+    'Microsoft.WindowsSoundRecorder',
+    'Microsoft.MicrosoftStickyNotes',
+    'Microsoft.BingWeather',
+    'Microsoft.WebMediaExtensions',
+    'Microsoft.GamingApp',
+    'Microsoft.Xbox.TCUI',
+    'Microsoft.Windows.DevHome',
+    'Microsoft.GetHelp',
+    'Microsoft.WindowsStore',
+    'MicrosoftWindows.CrossDevice',
+    'Microsoft.ApplicationCompatibilityEnhancements',
+    'Microsoft.YourPhone',
+    'Microsoft.XboxGamingOverlay',
+    'MicrosoftWindows.Client.WebExperience',
+    'Microsoft.SecHealthUI'
+
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
