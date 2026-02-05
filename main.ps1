@@ -50,7 +50,7 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
 }
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
-Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
+Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
 
 $Packages =
     'Microsoft.WindowsCalculator',
