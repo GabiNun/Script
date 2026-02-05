@@ -42,7 +42,7 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
 Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe" -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile' -Wait
 
-Stop-Process -Name SearchHost,*Edge* -Force -ErrorAction SilentlyContinue
+Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
