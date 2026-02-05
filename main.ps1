@@ -47,7 +47,7 @@ Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
-    Dism /Online /Remove-ProvisionedAppPackage /PackageName:$Package /NoRestart | Out-Null
+    Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
 }
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
