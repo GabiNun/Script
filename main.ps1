@@ -28,7 +28,7 @@ attrib +h Links
 attrib +h Favorites
 attrib +h Documents
 attrib +h Contacts
-attrib + OneDrive
+attrib +h OneDrive
 attrib -h AppData
 
 powercfg /Hibernate Off
