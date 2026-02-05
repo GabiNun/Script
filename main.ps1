@@ -28,6 +28,7 @@ attrib +h Links
 attrib +h Favorites
 attrib +h Documents
 attrib +h Contacts
+attrib + OneDrive
 attrib -h AppData
 
 powercfg /Hibernate Off
@@ -60,8 +61,6 @@ foreach ($Package in $Packages) {
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
-
-Remove-Item "$Home\OneDrive"
 
 Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
