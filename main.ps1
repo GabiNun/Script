@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer
+irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg;regedit /s Script.reg;Stop-Process -Name explorer;Remove-Item Script.reg
 
 winget source remove msstore | Out-Null
 
@@ -60,6 +60,8 @@ foreach ($Package in $Packages) {
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
+
+Remove-Item "$Home\OneDrive"
 
 Disable-ComputerRestore $Env:SystemDrive
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
