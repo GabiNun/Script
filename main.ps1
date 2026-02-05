@@ -91,7 +91,6 @@ $Packages =
     'Microsoft.SecHealthUI'
 
 Stop-Process -Name Widgets
-
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
