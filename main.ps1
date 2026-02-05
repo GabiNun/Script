@@ -92,9 +92,7 @@ $Packages =
 
 Stop-Process -Name ApplicationFrameHost,Widgets
 
-foreach ($Package in $Packages) {
-    Get-AppxPackage $Package | Remove-AppxPackage
-}
+foreach ($Package in $Packages) { Get-AppxPackage $Package | Remove-AppxPackage }
 
 Unregister-ScheduledTask -Confirm:$False
 
