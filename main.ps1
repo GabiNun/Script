@@ -54,42 +54,6 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
 
-$Packages =
-    'Microsoft.WindowsCalculator',
-    'Microsoft.WindowsCamera',
-    'Microsoft.WindowsAlarms',
-    'Microsoft.WindowsFeedbackHub',
-    'Microsoft.ZuneMusic',
-    'Microsoft.MicrosoftOfficeHub',
-    'Microsoft.BingSearch',
-    'Clipchamp.Clipchamp',
-    'Microsoft.BingNews',
-    'MSTeams',
-    'Microsoft.WindowsNotepad',
-    'Microsoft.Todos',
-    'Microsoft.OutlookForWindows',
-    'Microsoft.Paint',
-    'Microsoft.Windows.Photos',
-    'Microsoft.PowerAutomateDesktop',
-    'MicrosoftCorporationII.QuickAssist',
-    'Microsoft.ScreenSketch',
-    'Microsoft.MicrosoftSolitaireCollection',
-    'Microsoft.WindowsSoundRecorder',
-    'Microsoft.MicrosoftStickyNotes',
-    'Microsoft.BingWeather',
-    'Microsoft.WebMediaExtensions',
-    'Microsoft.GamingApp',
-    'Microsoft.Xbox.TCUI',
-    'Microsoft.Windows.DevHome',
-    'Microsoft.GetHelp',
-    'Microsoft.WindowsStore',
-    'MicrosoftWindows.CrossDevice',
-    'Microsoft.ApplicationCompatibilityEnhancements',
-    'Microsoft.YourPhone',
-    'Microsoft.XboxGamingOverlay',
-    'MicrosoftWindows.Client.WebExperience',
-    'Microsoft.SecHealthUI'
-
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
 foreach ($Package in $pm.FindPackages()) {
