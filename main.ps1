@@ -81,12 +81,11 @@ $Packages =
     'Microsoft.ApplicationCompatibilityEnhancements',
     'Microsoft.YourPhone',
     'Microsoft.XboxGamingOverlay',
-    'MicrosoftWindows.Client.WebExperience',
+    'Microsoft.WidgetsPlatformRuntime',
     'Microsoft.SecHealthUI'
 
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
-Stop-process -Name Widgets
 foreach ($package in $pm.FindPackages()) {
     if ($Packages -contains $package.Id.Name) {
         $pm.RemovePackageAsync($package.Id.FullName) | Out-Null
