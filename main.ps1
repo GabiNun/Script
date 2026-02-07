@@ -86,6 +86,7 @@ $Packages =
 
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
+Stop-Process -Name Widgets
 foreach ($package in $pm.FindPackages()) {
     if ($Packages -contains $package.Id.Name) {
         $pm.RemovePackageAsync($package.Id.FullName) | Out-Null
