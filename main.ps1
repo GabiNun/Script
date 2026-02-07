@@ -90,12 +90,10 @@ $Packages =
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
-$PackageManager = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
+$pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
-foreach ($Package in $Packages) {
-    foreach ($pkg in $PackageManager.FindPackages() | Where-Object { $_.Id.Name -eq $Package }) {
-        $PackageManager.RemovePackageAsync($pkg.Id.FullName) | Out-Null
-    }
+foreach ($Package in $pm.FindPackages()) {
+    $pm.RemovePackageAsync($Package.Id.FullName) | Out-Null
 }
 
 Unregister-ScheduledTask -Confirm:$False
