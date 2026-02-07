@@ -51,14 +51,14 @@ foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
     Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
 }
 
-Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
-Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
-
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
 foreach ($Package in $pm.FindPackages()) {
     $pm.RemovePackageAsync($Package.Id.FullName) | Out-Null
 }
+
+Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
+Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
 
