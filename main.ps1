@@ -47,10 +47,48 @@ Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\set
 Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
+$Packages =
+    'Microsoft.WindowsCalculator',
+    'Microsoft.WindowsCamera',
+    'Microsoft.WindowsAlarms',
+    'Microsoft.WindowsFeedbackHub',
+    'Microsoft.ZuneMusic',
+    'Microsoft.MicrosoftOfficeHub',
+    'Microsoft.BingSearch',
+    'Clipchamp.Clipchamp',
+    'Microsoft.BingNews',
+    'MSTeams',
+    'Microsoft.WindowsNotepad',
+    'Microsoft.Todos',
+    'Microsoft.OutlookForWindows',
+    'Microsoft.Paint',
+    'Microsoft.Windows.Photos',
+    'Microsoft.PowerAutomateDesktop',
+    'MicrosoftCorporationII.QuickAssist',
+    'Microsoft.ScreenSketch',
+    'Microsoft.MicrosoftSolitaireCollection',
+    'Microsoft.WindowsSoundRecorder',
+    'Microsoft.MicrosoftStickyNotes',
+    'Microsoft.BingWeather',
+    'Microsoft.WebMediaExtensions',
+    'Microsoft.GamingApp',
+    'Microsoft.Xbox.TCUI',
+    'Microsoft.Windows.DevHome',
+    'Microsoft.GetHelp',
+    'Microsoft.WindowsStore',
+    'MicrosoftWindows.CrossDevice',
+    'Microsoft.ApplicationCompatibilityEnhancements',
+    'Microsoft.YourPhone',
+    'Microsoft.XboxGamingOverlay',
+    'MicrosoftWindows.Client.WebExperience',
+    'Microsoft.SecHealthUI'
+
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
-foreach ($Package in $pm.FindPackages()) {
-    $pm.RemovePackageAsync($Package.Id.FullName) | Out-Null
+foreach ($pkgName in $Packages) {
+    foreach ($Package in $pm.FindPackages() | Where-Object { $_.Id.Name -eq $pkgName }) {
+        $pm.RemovePackageAsync($Package.Id.FullName) | Out-Null
+    }
 }
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
