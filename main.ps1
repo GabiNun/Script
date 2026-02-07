@@ -31,6 +31,7 @@ attrib +h "$Home\Documents"
 attrib +h "$Home\Contacts"
 attrib +h "$Home\OneDrive"
 attrib -h "$Home\AppData"
+attrib +h "C:\Windows.old"
 attrib +h "C:\inetpub"
 
 powercfg /Hibernate Off
