@@ -93,7 +93,7 @@ $Packages =
 $PackageManager = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
 foreach ($Package in $Packages) {
-    foreach ($pkg in $PackageManager.FindPackages() | Where-Object { $_.Id.Name -eq $Package }) {
+    foreach ($pkg in $PackageManager.FindPackages($Package)) {
         $PackageManager.RemovePackageAsync($pkg.Id.FullName) | Out-Null
     }
 }
