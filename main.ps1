@@ -93,7 +93,7 @@ foreach ($package in $pm.FindPackages()) {
     }
 }
 
-foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
+foreach ($Package in ($pm.FindProvisionedPackages()).Id.FullName) {
     Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
 }
 
