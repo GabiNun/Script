@@ -22,6 +22,7 @@ attrib +h $Env:Public
 attrib +h "Saved Games"
 attrib +h C:\inetpub
 attrib +h Videos
+attrib +h .glzr
 attrib +h Searches
 attrib +h Pictures
 attrib +h Music
