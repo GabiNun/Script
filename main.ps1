@@ -81,6 +81,7 @@ $Packages =
     'Microsoft.YourPhone',
     'Microsoft.XboxGamingOverlay',
     'MicrosoftWindows.Client.WebExperience',
+    'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
