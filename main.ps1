@@ -47,14 +47,14 @@ Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\set
 Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
-foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
-    Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
-}
-
 $pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
 
 foreach ($Package in $pm.FindPackages()) {
     $pm.RemovePackageAsync($Package.Id.FullName) | Out-Null
+}
+
+foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
+    Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
 }
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
