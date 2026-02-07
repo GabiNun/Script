@@ -18,20 +18,20 @@ attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Step
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h $Env:Public
-attrib +h "Saved Games"
-attrib +h C:\inetpub
-attrib +h Videos
-attrib +h .glzr
-attrib +h Searches
-attrib +h Pictures
-attrib +h Music
-attrib +h Links
-attrib +h Favorites
-attrib +h Documents
-attrib +h Contacts
-attrib +h OneDrive
-attrib -h AppData
+attrib +h "$Env:Public"
+attrib +h "$Home\Saved Games"
+attrib +h "$Home\Videos"
+attrib +h "$Home\.glzr"
+attrib +h "$Home\Searches"
+attrib +h "$Home\Pictures"
+attrib +h "$Home\Music"
+attrib +h "$Home\Links"
+attrib +h "$Home\Favorites"
+attrib +h "$Home\Documents"
+attrib +h "$Home\Contacts"
+attrib +h "$Home\OneDrive"
+attrib -h "$Home\AppData"
+attrib +h "C:\inetpub"
 
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
