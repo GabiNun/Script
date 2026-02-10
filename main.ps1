@@ -18,7 +18,7 @@ attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Step
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h "$Env:Public"
+attrib +h $Env:Public
 attrib +h Saved Games
 attrib +h Videos
 attrib +h .glzr
@@ -42,7 +42,7 @@ $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
 
-New-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" -Force | Out-Null
+New-Item C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -Force | Out-Null
 Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\setup.exe" -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile' -Wait
 
 Stop-Process -Name SearchHost,*Edge* -Force
