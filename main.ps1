@@ -19,7 +19,7 @@ attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Too
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h $Env:Public
-attrib +h Saved Games
+attrib +h "Saved Games"
 attrib +h Videos
 attrib +h .glzr
 attrib +h Searches
