@@ -94,7 +94,7 @@ foreach ($package in $pm.FindPackages()) {
 }
 
 foreach ($Package in ($pm.FindProvisionedPackages()).Id.FullName) {
-    Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
+    Start-Process -FilePath Dism.exe -ArgumentList '/Online /Remove-ProvisionedAppxPackage /PackageName:$Package'
 }
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
