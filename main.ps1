@@ -94,11 +94,11 @@ foreach ($package in $pm.FindPackages()) {
 }
 
 foreach ($Package in ($pm.FindProvisionedPackages()).Id.FullName) {
-    Start-Process -FilePath "Dism.exe" -ArgumentList "/Online /Remove-ProvisionedAppxPackage /PackageName:$Package"
+    Start-Process -FilePath "Dism.exe" -ArgumentList "/Online /Remove-ProvisionedAppxPackage /PackageName:$Package" -NoNewWindow
 }
 
-Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
-Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
+Start-Process -FilePath "Dism.exe" -ArgumentList "/Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart" -NoNewWindow
+Start-Process -FilePath "Dism.exe" -ArgumentList "/Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart" -NoNewWindow
 
 Unregister-ScheduledTask -Confirm:$False
 
