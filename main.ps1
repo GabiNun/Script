@@ -93,9 +93,7 @@ foreach ($package in $pm.FindPackages()) {
     }
 }
 
-Get-AppxProvisionedPackage -Online | ForEach-Object {
-    Start-Process dism.exe -ArgumentList "/Online /Remove-ProvisionedAppxPackage /PackageName:$($_.PackageName)" -WindowStyle Hidden
-}
+Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
