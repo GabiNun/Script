@@ -93,7 +93,9 @@ foreach ($package in $pm.FindPackages()) {
     }
 }
 
-Get-AppxProvisionedPackage -Online | Remove-AppxProvisionedPackage -Online
+foreach ($Package in ($pm.FindProvisionedPackages()).Id.FullName) {
+    Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
+}
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
