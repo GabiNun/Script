@@ -14,27 +14,19 @@ Start-Process glazewm.exe
 
 Remove-Item Registry.reg
 
-attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk"
-attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
-attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Steps Recorder.lnk"
-attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
-attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
-attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
-attrib +h $Env:Public
-attrib +h "Saved Games"
-attrib +h Videos
-attrib +h .glzr
-attrib +h Searches
-attrib +h Pictures
-attrib +h Music
-attrib +h Links
-attrib +h Favorites
-attrib +h Documents
-attrib +h Contacts
-attrib +h OneDrive
-attrib -h AppData
-attrib +h C:\Windows.old
-attrib +h C:\inetpub
+$Files =
+    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk",
+    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk",
+    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Steps Recorder.lnk",
+    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
+    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
+    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility",
+    "$Env:Public","Saved Games","Videos",".glzr","Searches","Pictures","Music","Links","Favorites","Documents","Contacts","OneDrive",
+    "C:\Windows.old","C:\inetpub"
+
+foreach ($File in $Files) {
+    attrib +h $File
+}
 
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
