@@ -91,7 +91,7 @@ foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
 
-foreach ($Package in $Packages) {
+foreach ($Package in $Packages[0..($Packages.Count - 2)]) {
     Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Package | Remove-AppxProvisionedPackage -Online | Out-Null
 }
 
