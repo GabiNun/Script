@@ -2,17 +2,17 @@ $ProgressPreference = 'SilentlyContinue'
 
 winget source remove msstore | Out-Null
 
-irm github.com/GabiNun/Script/raw/main/Settings.reg -Out Script.reg
+irm github.com/GabiNun/Script/raw/main/Registry.reg -Out Registry.reg
 irm github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\config.yaml
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
 irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 
-Start-Process regedit.exe -ArgumentList '/s Script.reg'
+Start-Process regedit.exe -ArgumentList '/s Registry.reg'
 Start-Process OneDriveSetup.exe /uninstall
 Start-Process glazewm.exe
 
-Remove-Item Script.reg
+Remove-Item Registry.reg
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk"
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
