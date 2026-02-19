@@ -84,13 +84,9 @@ $Packages =
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
-$pm = [Windows.Management.Deployment.PackageManager, Windows.Management.Deployment, ContentType = WindowsRuntime]::new()
-
 Stop-Process -Name Widgets
-foreach ($package in $pm.FindPackages()) {
-    if ($Packages -contains $package.Id.Name) {
-        $pm.RemovePackageAsync($package.Id.FullName) | Out-Null
-    }
+foreach ($Package in $Packages) {
+    Get-AppxPackage $Package | Remove-AppxPackage
 }
 
 foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
