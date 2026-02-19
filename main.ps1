@@ -91,8 +91,8 @@ foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
 
-foreach ($Package in (Get-ProvisionedAppPackage -Online).PackageName) {
-    Dism /Online /Remove-ProvisionedAppxPackage /PackageName:$Package | Out-Null
+foreach ($Package in $Packages) {
+    Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Package | Remove-AppxProvisionedPackage -Online | Out-Null
 }
 
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
