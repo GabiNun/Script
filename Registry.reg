@@ -114,6 +114,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3]
 "Settings"=hex:30,00,00,00,fe,ff,ff,ff,03,00,00,00,03,00,00,00,30,00,00,00,30,00,00,00,00,00,00,00,08,04,00,00,80,07,00,00,38,04,00,00,60,00,00,00,01,00,00,00
 
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vss]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RmSvc]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks] 
