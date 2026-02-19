@@ -8,11 +8,11 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glaze
 irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 
-regedit /s Script.reg
-Remove-Item Script.reg
-
 Start-Process OneDriveSetup.exe /uninstall
+Start-Process regedit /s Script.reg
 Start-Process glazewm.exe
+
+Remove-Item Script.reg
 
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk"
 attrib +h "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
