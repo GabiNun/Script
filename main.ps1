@@ -20,9 +20,9 @@ $Files =
     "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Steps Recorder.lnk",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility",
-    "$Env:Public","Saved Games","Videos",".glzr","Searches","Pictures","Music","Links","Favorites","Documents","Contacts","OneDrive",
-    "C:\Windows.old","C:\inetpub"
+    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility","Links",
+    "$Env:Public","Saved Games","Videos",".glzr","Searches","Pictures","Music",
+    "Documents","Contacts","OneDrive","C:\Windows.old","C:\inetpub","Favorites"
 
 foreach ($File in $Files) {
     attrib +h $File
