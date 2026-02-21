@@ -12,12 +12,15 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windo
 
 Start-Process regedit.exe -ArgumentList '/s Registry.reg'
 Start-Process glazewm.exe
+Start-Process C:\Windows\System32\mspaint.exe /uninstall
+Start-Process C:\Windows\System32\SnippingTool.exe /uninstall
 
 Remove-Item Registry.reg
 
 $Files =
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
+    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Calculator.lnk"
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
     "$Env:Public",
     "$Home\Favorites",
