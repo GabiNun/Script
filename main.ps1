@@ -1,5 +1,9 @@
 $ProgressPreference = 'SilentlyContinue'
 
+Install-PackageProvider -Name NuGet -Force
+Install-Module Microsoft.WinGet.Client -Force
+Repair-WinGetPackageManager
+
 irm github.com/GabiNun/Script/raw/main/Registry.reg -Out Registry.reg
 irm github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\config.yaml
 irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
