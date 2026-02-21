@@ -50,6 +50,7 @@ Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\set
 Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
+Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
