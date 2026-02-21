@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-Install-PackageProvider -Name NuGet -Force
+Install-PackageProvider -Name NuGet -Force | Out-Null
 Install-Module Microsoft.WinGet.Client -Force
 Repair-WinGetPackageManager
 
