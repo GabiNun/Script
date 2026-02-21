@@ -20,17 +20,17 @@ $Files =
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
     "$Env:Public",
+    "$Home\Favorites",
+    "$Home\Links",
+    "$Home\Music",
+    "$Home\Pictures",
+    "$Home\Saved Games",
+    "$Home\Searches",
+    "$Home\Videos",
+    "$Home\Documents",
+    "$Home\Contacts",
     "C:\PerfLogs",
-    "C:\Windows.old",
-    "Favorites",
-    "Links",
-    "Music",
-    "Pictures",
-    "Saved Games",
-    "Searches",
-    "Videos",
-    "Documents",
-    "Contacts"
+    "C:\Windows.old"
 
 foreach ($File in $Files) {
     attrib +h $File
