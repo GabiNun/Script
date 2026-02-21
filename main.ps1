@@ -17,28 +17,23 @@ Start-Process SnippingTool.exe /uninstall
 
 Remove-Item Registry.reg
 
-$Files =
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility",
-    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad.lnk",
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
-    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Calculator.lnk",
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
-    "$Env:Public",
-    "$Home\Favorites",
-    "$Home\Links",
-    "$Home\Music",
-    "$Home\Pictures",
-    "$Home\Saved Games",
-    "$Home\Searches",
-    "$Home\Videos",
-    "$Home\Documents",
-    "$Home\Contacts",
-    "C:\PerfLogs",
-    "C:\Windows.old"
-
-foreach ($File in $Files) {
-    attrib +h $File
-}
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
+attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Calculator.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
+attrib +h "$Env:Public"
+attrib +h "$Home\Favorites"
+attrib +h "$Home\Links"
+attrib +h "$Home\Music"
+attrib +h "$Home\Pictures"
+attrib +h "$Home\Saved Games"
+attrib +h "$Home\Searches"
+attrib +h "$Home\Videos"
+attrib +h "$Home\Documents"
+attrib +h "$Home\Contacts"
+attrib +h "C:\PerfLogs"
+attrib +h "C:\Windows.old"
 attrib -h "$Home\AppData"
 
 powercfg /Hibernate Off
