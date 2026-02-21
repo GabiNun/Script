@@ -19,6 +19,7 @@ Remove-Item Registry.reg
 
 $Files =
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility",
+    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad.lnk",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
     "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Calculator.lnk",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
@@ -50,7 +51,6 @@ Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
-Get-WindowsCapability -Name *Notepad* -Online | Remove-WindowsCapability -Online | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
