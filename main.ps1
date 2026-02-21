@@ -12,8 +12,8 @@ irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windo
 
 Start-Process regedit.exe -ArgumentList '/s Registry.reg'
 Start-Process glazewm.exe
-Start-Process C:\Windows\System32\mspaint.exe /uninstall
-Start-Process C:\Windows\System32\SnippingTool.exe /uninstall
+Start-Process mspaint.exe /uninstall
+Start-Process SnippingTool.exe /uninstall
 
 Remove-Item Registry.reg
 
