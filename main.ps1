@@ -72,8 +72,8 @@ $Packages =
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
-Stop-Process -Name WidgetService,Widgets
 foreach ($Package in $Packages) {
+    Stop-Process -Name WidgetService,Widgets
     Get-AppxPackage $Package | Remove-AppxPackage
 }
 
@@ -86,3 +86,4 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+
