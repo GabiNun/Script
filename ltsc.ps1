@@ -7,12 +7,12 @@ Expand-Archive DesktopAppInstaller_Dependencies.zip
 Add-AppxPackage DesktopAppInstaller.msixbundle -DependencyPath DesktopAppInstaller_Dependencies\x64\*
 Remove-Item DesktopAppInstaller*
 
-irm github.com/GabiNun/Script/raw/main/Registry.reg -Out Registry.reg
-irm github.com/GabiNun/Script/raw/main/Defender.reg -Out Defender.reg
-irm github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\config.yaml
-irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
-irm github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
-irm github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
+irm https://github.com/GabiNun/script/raw/main/Registry/Defender.reg -Out Registry.reg
+irm https://github.com/GabiNun/Script/raw/main/Registry/Defender.reg -Out Defender.reg
+irm https://github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\config.yaml
+irm https://github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
+irm https://github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
+irm https://github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
 
 Register-ScheduledTask -TaskName Defender -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Home\Defender.reg") -User "NT SERVICE\TrustedInstaller" | Out-Null
 Start-ScheduledTask -TaskName Defender
@@ -60,5 +60,6 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+
 
 Stop-Process -Name Explorer
