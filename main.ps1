@@ -2,14 +2,8 @@ $ProgressPreference = 'SilentlyContinue'
 
 winget source remove msstore | Out-Null
 
-irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
 irm https://github.com/GabiNun/script/raw/main/Registry/Registry.ps1 | iex
-
-Register-ScheduledTask -TaskName Defender -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Home\Defender.reg") -User "NT SERVICE\TrustedInstaller" | Out-Null
-Start-ScheduledTask -TaskName Defender
-
-Remove-Item Registry.reg
-Remove-Item Defender.reg
+irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
 
 $Files =
     "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk",
@@ -94,4 +88,5 @@ Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 
 
 Stop-Process -Name Explorer
+
 
