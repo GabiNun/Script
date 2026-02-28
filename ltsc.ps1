@@ -7,17 +7,8 @@ Expand-Archive DesktopAppInstaller_Dependencies.zip
 Add-AppxPackage DesktopAppInstaller.msixbundle -DependencyPath DesktopAppInstaller_Dependencies\x64\*
 Remove-Item DesktopAppInstaller*
 
-irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
 irm https://github.com/GabiNun/script/raw/main/Registry/Registry.ps1 | iex
-
-Register-ScheduledTask -TaskName Defender -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Home\Defender.reg") -User "NT SERVICE\TrustedInstaller" | Out-Null
-Start-ScheduledTask -TaskName Defender
-
-Start-Process mspaint.exe /uninstall
-Start-Process SnippingTool.exe /uninstall
-
-Remove-Item Registry.reg
-Remove-Item Defender.reg
+irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Notepad.lnk"
@@ -41,6 +32,9 @@ attrib -h "$Home\AppData"
 
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
+
+Start-Process mspaint.exe /uninstall
+Start-Process SnippingTool.exe /uninstall
 
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 New-Item C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -Force | Out-Null
