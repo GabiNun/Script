@@ -8,3 +8,5 @@ Start-ScheduledTask -TaskName Defender
 
 Remove-Item Registry.reg
 Remove-Item Defender.reg
+
+Stop-Process -Name Explorer
