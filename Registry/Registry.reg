@@ -9,6 +9,11 @@ Windows Registry Editor Version 5.00
 "TaskbarFlashing"=dword:0
 "ShowStatusbar"=dword:0
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"ServiceKeepAlive"=dword:0
+"DisableAntiSpyware"=dword:1
+"DisableAntiVirus"=dword:1
+
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "MouseSpeed"=dword:0
 "MouseThreshold1"=dword:0
@@ -122,3 +127,4 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\InstallService]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\webthreatdefsvc]
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\webthreatdefusersvc]
+
