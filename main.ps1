@@ -37,7 +37,6 @@ Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
 Start-Process OneDriveSetup.exe /uninstall
 
 $Packages =
-    'MicrosoftWindows.Client.WebExperience',
     'Microsoft.WindowsCalculator',
     'Microsoft.WindowsCamera',
     'Microsoft.WindowsAlarms',
@@ -70,8 +69,10 @@ $Packages =
     'Microsoft.ApplicationCompatibilityEnhancements',
     'Microsoft.YourPhone',
     'Microsoft.XboxGamingOverlay',
+    'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
+Stop-Process -Name Widgets
 Stop-Process -Name WidgetService
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
@@ -86,5 +87,6 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+
 
 
