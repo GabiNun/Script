@@ -2,16 +2,8 @@ $ProgressPreference = 'SilentlyContinue'
 
 winget source remove msstore | Out-Null
 
-irm https://github.com/GabiNun/script/raw/main/Registry/Defender.reg -Out Registry.reg
-irm https://github.com/GabiNun/Script/raw/main/Registry/Defender.reg -Out Defender.reg
-irm https://github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -Out C:\Windows\config.yaml
-irm https://github.com/GabiNun/Script/raw/main/Glazewm/glazewm.exe -Out C:\Windows\glazewm.exe
-irm https://github.com/GabiNun/Script/raw/main/Glazewm/vcruntime140.dll -Out C:\Windows\vcruntime140.dll
-irm https://github.com/GabiNun/Script/raw/main/Glazewm/glazewm-watcher.exe -Out C:\Windows\glazewm-watcher.exe
-
-Start-Process regedit.exe -ArgumentList '/s Registry.reg'
-Start-Process OneDriveSetup.exe /uninstall
-Start-Process glazewm.exe
+irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
+irm https://github.com/GabiNun/script/raw/main/Registry/Registry.ps1 | iex
 
 Register-ScheduledTask -TaskName Defender -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Home\Defender.reg") -User "NT SERVICE\TrustedInstaller" | Out-Null
 Start-ScheduledTask -TaskName Defender
@@ -46,6 +38,8 @@ Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\*\Installer\set
 
 Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
+
+Start-Process OneDriveSetup.exe /uninstall
 
 $Packages =
     'Microsoft.WindowsCalculator',
@@ -100,3 +94,4 @@ Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 
 
 Stop-Process -Name Explorer
+
