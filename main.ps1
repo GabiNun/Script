@@ -72,7 +72,7 @@ $Packages =
     'MicrosoftWindows.Client.WebExperience',
     'Microsoft.SecHealthUI'
 
-Stop-Process -Name Widgets,WidgetService
+Stop-Process -Name WidgetService,Widgets
 foreach ($Package in $Packages) {
     Get-AppxPackage $Package | Remove-AppxPackage
 }
