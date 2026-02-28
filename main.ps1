@@ -13,7 +13,7 @@ $Files =
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
     "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility","Links",
     "$Env:Public","Saved Games","Videos",".glzr","Searches","Pictures","Music",
-    "Documents","Contacts","OneDrive","C:\Windows.old","C:\inetpub","Favorites"
+    "Documents","Contacts","OneDrive","C:\inetpub","Favorites"
 
 foreach ($File in $Files) {
     attrib +h $File
@@ -86,3 +86,4 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+
