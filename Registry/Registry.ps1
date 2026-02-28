@@ -6,7 +6,5 @@ Start-Process regedit.exe -ArgumentList '/s Registry.reg'
 Register-ScheduledTask -TaskName Defender -Action (New-ScheduledTaskAction -Execute regedit.exe -Argument "/s $Home\Defender.reg") -User "NT SERVICE\TrustedInstaller" | Out-Null
 Start-ScheduledTask -TaskName Defender
 
-#Remove-Item Registry.reg
-#Remove-Item Defender.reg
-
+Remove-Item Registry.reg
 Stop-Process -Name Explorer
