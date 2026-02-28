@@ -30,11 +30,11 @@ attrib +h "$Home\.glzr"
 attrib +h "C:\Windows.old"
 attrib -h "$Home\AppData"
 
+mspaint /uninstall
+SnippingTool /uninstall
+
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
-
-mspaint.exe /uninstall
-SnippingTool.exe /uninstall
 
 $Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
 New-Item C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -Force | Out-Null
