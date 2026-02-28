@@ -84,6 +84,5 @@ foreach ($Package in $Packages[0..($Packages.Count - 2)]) {
 Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /NoRestart | Out-Null
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
 
-Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
-
+Unregister-ScheduledTask -Confirm:$False
