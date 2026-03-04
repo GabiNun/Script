@@ -5,19 +5,23 @@ winget source remove msstore | Out-Null
 irm https://github.com/GabiNun/script/raw/main/Registry.ps1 | iex
 irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
 
-$Files =
-    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Windows Media Player Legacy.lnk",
-    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk",
-    "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\Steps Recorder.lnk",
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk",
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk",
-    "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility","Links",
-    "$Env:Public","Saved Games","Videos",".glzr","Searches","Pictures","Music",
-    "Documents","Contacts","OneDrive","C:\inetpub","Favorites"
-
-foreach ($File in $Files) {
-    attrib +h $File
-}
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
+attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
+attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
+attrib +h "$Env:Public"
+attrib +h "$Home\Favorites"
+attrib +h "$Home\Links"
+attrib +h "$Home\Music"
+attrib +h "$Home\Pictures"
+attrib +h "$Home\Saved Games"
+attrib +h "$Home\Searches"
+attrib +h "$Home\Videos"
+attrib +h "$Home\Documents"
+attrib +h "$Home\Contacts"
+attrib +h "$Home\.glzr"
+attrib +h "C:\Windows.old"
+attrib -h "$Home\AppData"
 
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
@@ -86,4 +90,5 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+
 
