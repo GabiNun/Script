@@ -10,22 +10,23 @@ attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
-attrib +h "$Env:Public"
-attrib +h "$Home\Favorites"
-attrib +h "$Home\Links"
-attrib +h "$Home\Music"
-attrib +h "$Home\Pictures"
-attrib +h "$Home\Saved Games"
-attrib +h "$Home\Searches"
-attrib +h "$Home\Videos"
-attrib +h "$Home\Documents"
-attrib +h "$Home\Contacts"
-attrib +h "$Home\.glzr"
-attrib +h "C:\Windows.old"
-attrib -h "$Home\AppData"
+attrib +h $Env:Public
+attrib +h Favorites
+attrib +h Links
+attrib +h Music
+attrib +h Pictures
+attrib +h Searches
+attrib +h Videos
+attrib +h Documents
+attrib +h Contacts
+attrib +h .glzr
+attrib +h C:\Windows.old
+attrib +h C:\inetpub
+attrib +h "Saved Games"
+attrib -h AppData
 
 powercfg /Hibernate Off
-powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String "Power Scheme GUID").Line.Split()[3]
+powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String Power Scheme GUID).Line.Split()[3]
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
 $Sid = (Get-LocalUser $Env:UserName).Sid.Value
@@ -37,7 +38,7 @@ New-Item C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEd
 Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile' -Wait
 
 Stop-Process -Name SearchHost,*Edge* -Force
-Remove-Item "C:\Program Files (x86)\Microsoft" -Recurse -Force
+Remove-Item 'C:\Program Files (x86)\Microsoft' -Recurse -Force
 
 Start-Process OneDriveSetup.exe /uninstall
 
@@ -92,4 +93,3 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
-
