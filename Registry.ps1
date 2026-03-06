@@ -21,6 +21,9 @@ Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Name 
 New-Item -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start -Name HideRecommendedSection -Value 1
 
+New-Item -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer
+Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name DisableNotificationCenter -Value 1
+
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme -Value 0
 
@@ -31,8 +34,6 @@ Set-ItemProperty -Path 'HKCU:Software\Classes\Local Settings\Software\Microsoft\
 Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name ExcludeWUDriversInQualityUpdate -Value 1
 
 Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop' -Name Wallpaper -Value C:\Windows\Web\Wallpaper\ThemeD\img32.jpg
-
-Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name DisableNotificationCenter -Value 1
 
 $Value = ([byte[]](0x30,0x00,0x00,0x00,0xfe,0xff,0xff,0xff,0x03,0x00,0x00,0x00,0x03,0x00,0x00,0x00,0x30,0x00,0x00,0x00,0x30,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0x04,0x00,0x00,0x80,0x07,0x00,0x00,0x38,0x04,0x00,0x00,0x60,0x00,0x00,0x00,0x01,0x00,0x00,0x00))
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" -Name "Settings" -Value $Value
