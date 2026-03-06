@@ -88,11 +88,4 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 $Value = ([byte[]](0x30,0x00,0x00,0x00,0xfe,0xff,0xff,0xff,0x03,0x00,0x00,0x00,0x03,0x00,0x00,0x00,0x30,0x00,0x00,0x00,0x30,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0x04,0x00,0x00,0x80,0x07,0x00,0x00,0x38,0x04,0x00,0x00,0x60,0x00,0x00,0x00,0x01,0x00,0x00,0x00))
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" -Name "Settings" -Value $Value
 
-Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\vss" -Recurse 
-Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc" -Recurse 
-Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Spooler" -Recurse 
-Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack" -Recurse 
-Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\webthreatdefsvc" -Recurse 
-Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\webthreatdefusersvc" -Recurse 
-
 Stop-Process -Name Explorer
