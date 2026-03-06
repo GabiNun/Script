@@ -26,7 +26,7 @@ attrib +h "Saved Games"
 attrib -h AppData
 
 powercfg /Hibernate Off
-powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String Power Scheme GUID).Line.Split()[3]
+powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String 'Power Scheme GUID').Line.Split()[3]
 
 $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
 $Sid = (Get-LocalUser $Env:UserName).Sid.Value
@@ -93,3 +93,4 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
+
