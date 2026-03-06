@@ -3,6 +3,7 @@ $ProgressPreference = 'SilentlyContinue'
 winget source remove msstore | Out-Null
 
 irm https://github.com/GabiNun/script/raw/main/Registry.ps1 | iex
+irm https://github.com/GabiNun/script/raw/main/ViveTool.ps1 | iex
 irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
@@ -90,3 +91,4 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
+
