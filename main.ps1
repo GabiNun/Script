@@ -91,4 +91,4 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
-Disable-ComputerRestore -Drive $Env:SystemDrive
+Disable-ComputerRestore $Env:SystemDrive
