@@ -8,9 +8,9 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Nam
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Name DisableAntiSpyware -Value 1
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Name DisableAntiVirus -Value 1
 
-New-ItemProperty -Path 'HKCU:\Control Panel\Mouse' -Name MouseSpeed -Value 0
-New-ItemProperty -Path 'HKCU:\Control Panel\Mouse' -Name MouseThreshold1 -Value 0
-New-ItemProperty -Path 'HKCU:\Control Panel\Mouse' -Name MouseThreshold2 -Value 0
+Set-ItemProperty -Path 'HKCU:\Control Panel\Mouse' -Name MouseSpeed -Value 0
+Set-ItemProperty -Path 'HKCU:\Control Panel\Mouse' -Name MouseThreshold1 -Value 0
+Set-ItemProperty -Path 'HKCU:\Control Panel\Mouse' -Name MouseThreshold2 -Value 0
 
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -Name PromptOnSecureDesktop -Value 0
@@ -55,7 +55,6 @@ $Value = ([byte[]](0x30,0x00,0x00,0x00,0xfe,0xff,0xff,0xff,0x03,0x00,0x00,0x00,0
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" -Name "Settings" -Value $Value
 
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\WSAIFabricSvc -Name Start -Value 4
-Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\TrkWks -Name Start -Value 4
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Spooler -Name Start -Value 4
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc -Name Start -Value 4
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\InstallService -Name Start -Value 4
