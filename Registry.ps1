@@ -74,5 +74,4 @@ Set-Service -Name InventorySvc -StartupType Disabled
 Set-Service -Name InstallService -StartupType Disabled
 Set-Service -Name EventLog -StartupType Disabled
 Set-Service -Name DPS -StartupType Disabled
-Set-Service -Name DoSvc -StartupType Disabled
 Set-Service -Name RasMan -StartupType Manual
