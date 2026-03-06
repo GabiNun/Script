@@ -3,5 +3,4 @@ Expand-Archive ViVeTool.zip
 
 Start-Process 'ViVeTool\\ViVeTool.exe' -ArgumentList '/disable /id:47205210' -Wait -NoNewWindow
 
-Remove-Item ViVeTool -Recurse
-Remove-Item ViVeTool.zip
+Remove-Item ViVeTool* -Recurse
