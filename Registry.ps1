@@ -25,6 +25,7 @@ Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Sta
 
 New-Item -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer
 Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name DisableNotificationCenter -Value 1
+Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name DisableSearchBoxSuggestions -Value 1
 
 New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate
 Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -Name ExcludeWUDriversInQualityUpdate -Value 1
