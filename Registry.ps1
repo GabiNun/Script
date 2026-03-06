@@ -54,24 +54,11 @@ Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
 $Value = ([byte[]](0x30,0x00,0x00,0x00,0xfe,0xff,0xff,0xff,0x03,0x00,0x00,0x00,0x03,0x00,0x00,0x00,0x30,0x00,0x00,0x00,0x30,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0x04,0x00,0x00,0x80,0x07,0x00,0x00,0x38,0x04,0x00,0x00,0x60,0x00,0x00,0x00,0x01,0x00,0x00,0x00))
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" -Name "Settings" -Value $Value
 
-Stop-Process -Name explorer
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\WSAIFabricSvc -Name Start -Value 4
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\TrkWks -Name Start -Value 4
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Spooler -Name Start -Value 4
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc -Name Start -Value 4
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\InstallService -Name Start -Value 4
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\EventLog -Name Start -Value 4
 
-Set-Service -Name WSAIFabricSvc -StartupType Disabled
-Set-Service -Name whesvc -StartupType Disabled
-Set-Service -Name VaultSvc -StartupType Disabled
-Set-Service -Name TrkWks -StartupType Disabled
-Set-Service -Name Spooler -StartupType Disabled
-Set-Service -Name SENS -StartupType Disabled
-Set-Service -Name RmSvc -StartupType Disabled
-Set-Service -Name PcaSvc -StartupType Disabled
-Set-Service -Name midisrv -StartupType Disabled
-Set-Service -Name lmhosts -StartupType Disabled
-Set-Service -Name lfsvc -StartupType Disabled
-Set-Service -Name LanmanWorkstation -StartupType Disabled
-Set-Service -Name LanmanServer -StartupType Disabled
-Set-Service -Name iphlpsvc -StartupType Disabled
-Set-Service -Name InventorySvc -StartupType Disabled
-Set-Service -Name InstallService -StartupType Disabled
-Set-Service -Name EventLog -StartupType Disabled
-Set-Service -Name DPS -StartupType Disabled
-Set-Service -Name RasMan -StartupType Manual
+Stop-Process -Name explorer
