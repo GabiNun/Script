@@ -33,9 +33,7 @@ $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
 
-$Version = (Get-AppxPackage Microsoft.MicrosoftEdge.Stable).Version
-New-Item C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe -Force | Out-Null
-Start-Process "C:\Program Files (x86)\Microsoft\Edge\Application\$Version\Installer\setup.exe" -ArgumentList '--uninstall --system-level --force-uninstall --delete-profile' -Wait
+irm https://gist.github.com/GabiNun/329c01be57d546e5c8942861cb538e94/raw/UninstallEdge.ps1 | iex | Out-Null
 
 Stop-Process -Name SearchHost,*Edge* -Force
 Remove-Item 'C:\Program Files (x86)\Microsoft' -Recurse -Force
@@ -93,4 +91,3 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
-
