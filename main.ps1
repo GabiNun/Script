@@ -90,5 +90,6 @@ Dism /Online /Disable-Feature /FeatureName:Microsoft-RemoteDesktopConnection /No
 Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out-Null
 
 Unregister-ScheduledTask -Confirm:$False
+Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
