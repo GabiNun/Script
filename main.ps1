@@ -19,6 +19,7 @@ attrib +h Searches
 attrib +h Videos
 attrib +h Documents
 attrib +h Contacts
+attrib +h OneDrive
 attrib +h .glzr
 attrib +h C:\Windows.old
 attrib +h C:\inetpub
@@ -91,3 +92,4 @@ Dism /Online /Enable-Feature /FeatureName:Microsoft-Hyper-V-All /NoRestart | Out
 Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
+
