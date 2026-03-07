@@ -3,8 +3,8 @@ $ProgressPreference = 'SilentlyContinue'
 winget source remove msstore | Out-Null
 
 irm https://github.com/GabiNun/script/raw/main/Registry.ps1 | iex | Out-Null
-irm https://github.com/GabiNun/script/raw/main/ViveTool.ps1 | iex
 irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
+(irm https://github.com/ChrisTitusTech/winutil/raw/main/config/tweaks.json).WPFTweaksRevertStartMenu.InvokeScript | iex | Out-Null
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
@@ -93,3 +93,4 @@ Unregister-ScheduledTask -Confirm:$False
 Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
+
