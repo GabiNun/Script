@@ -10,6 +10,7 @@ attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
+attrib +h "$Home\Saved Games"
 attrib +h $Env:Public
 attrib +h $Home\Favorites
 attrib +h $Home\Links
@@ -23,7 +24,6 @@ attrib +h $Home\OneDrive
 attrib +h $Home\.glzr
 attrib +h C:\Windows.old
 attrib +h C:\inetpub
-attrib +h "$Home\Saved Games"
 attrib -h $Home\AppData
 
 powercfg /Hibernate Off
@@ -97,4 +97,5 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
 
