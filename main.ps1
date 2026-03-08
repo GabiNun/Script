@@ -94,8 +94,6 @@ Get-CimInstance Win32_ShadowCopy | Remove-CimInstance
 Get-CimInstance Win32_PageFileSetting | Remove-CimInstance
 Disable-ComputerRestore $Env:SystemDrive
 
-Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile start2.bin
-Remove-Item $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
-Move-Item -Path .\start2.bin -Destination $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
+Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
