@@ -4,7 +4,7 @@ winget source remove msstore | Out-Null
 
 irm https://github.com/GabiNun/script/raw/main/Registry.ps1 | iex | Out-Null
 irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
-(irm https://github.com/ChrisTitusTech/winutil/raw/main/config/tweaks.json).WPFTweaksRevertStartMenu.InvokeScript | Out-Null | iex
+(irm https://github.com/ChrisTitusTech/winutil/raw/main/config/tweaks.json).WPFTweaksRevertStartMenu.InvokeScript | iex
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
@@ -99,3 +99,4 @@ Remove-Item $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost
 Move-Item -Path .\start2.bin -Destination $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
