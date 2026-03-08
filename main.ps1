@@ -11,20 +11,20 @@ attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Administrative Tools.lnk"
 attrib +h "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools\Character Map.lnk"
 attrib +h $Env:Public
-attrib +h Favorites
-attrib +h Links
-attrib +h Music
-attrib +h Pictures
-attrib +h Searches
-attrib +h Videos
-attrib +h Documents
-attrib +h Contacts
-attrib +h OneDrive
-attrib +h .glzr
+attrib +h $Home\Favorites
+attrib +h $Home\Links
+attrib +h $Home\Music
+attrib +h $Home\Pictures
+attrib +h $Home\Searches
+attrib +h $Home\Videos
+attrib +h $Home\Documents
+attrib +h $Home\Contacts
+attrib +h $Home\OneDrive
+attrib +h $Home\.glzr
 attrib +h C:\Windows.old
 attrib +h C:\inetpub
-attrib +h "Saved Games"
-attrib -h AppData
+attrib +h "$Home\Saved Games"
+attrib -h $Home\AppData
 
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String 'Power Scheme GUID').Line.Split()[3]
@@ -97,3 +97,4 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
