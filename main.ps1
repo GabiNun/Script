@@ -99,4 +99,3 @@ Remove-Item $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost
 Move-Item -Path .\start2.bin -Destination $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
-
