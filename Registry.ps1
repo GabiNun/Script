@@ -37,7 +37,7 @@ Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate -
 Remove-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name SecurityHealth
 Remove-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband -Name Favorites
 
-Remove-Item HKCU:\AppEvents\Schemes\Apps
+Remove-Item HKCU:\AppEvents\Schemes\Apps -Recurse
 
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Accessibility -Name CursorColor -Value 0
 
