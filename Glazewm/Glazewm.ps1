@@ -1,6 +1,6 @@
 $ProgressPreference = 'SilentlyContinue'
 
-[Environment]::SetEnvironmentVariable("GLAZEWM_CONFIG_PATH","C:\Windows\config.yaml","Machine")
+[Environment]::SetEnvironmentVariable('GLAZEWM_CONFIG_PATH','C:\Windows\config.yaml','Machine')
 Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run -Name Glazewm -Value glazewm.exe
 
 Invoke-WebRequest https://github.com/GabiNun/Script/raw/main/Glazewm/config.yaml -OutFile C:\Windows\config.yaml
