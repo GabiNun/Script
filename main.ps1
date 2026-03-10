@@ -34,9 +34,6 @@ New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\E
 
 irm https://gist.github.com/GabiNun/329c01be57d546e5c8942861cb538e94/raw/UninstallEdge.ps1 | iex | Out-Null
 
-Stop-Process -Name SearchHost,*Edge* -Force
-Remove-Item 'C:\Program Files (x86)\Microsoft' -Recurse -Force
-
 OneDriveSetup -uninstall
 
 $Packages =
@@ -95,3 +92,4 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
