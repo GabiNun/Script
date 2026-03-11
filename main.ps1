@@ -4,6 +4,7 @@ irm https://gist.github.com/GabiNun/329c01be57d546e5c8942861cb538e94/raw/Uninsta
 (irm https://github.com/ChrisTitusTech/winutil/raw/main/config/tweaks.json).WPFTweaksRevertStartMenu.InvokeScript | iex
 
 winget source remove msstore | Out-Null
+OneDriveSetup /uninstall
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
@@ -32,8 +33,6 @@ $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
 $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
-
-OneDriveSetup -uninstall
 
 $Packages =
     'Microsoft.WindowsCalculator',
@@ -87,4 +86,5 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
 
