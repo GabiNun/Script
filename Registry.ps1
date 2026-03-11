@@ -57,6 +57,8 @@ Set-ItemProperty -Path 'HKCU:Software\Classes\Local Settings\Software\Microsoft\
 
 Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel -Name '{645FF040-5081-101B-9F08-00AA002F954E}' -Value 1
 
+New-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$((Get-LocalUser $Env:UserName).Sid.Value)\$((Get-AppxPackage *SecHealthUI).PackageFullName)" -Force
+
 New-item -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer -Force
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer -Name "PageSpaceControlSizer" -Value ([byte[]](0xa0,0,0,0,0,0,0,0,0,0,0,0,0xec,0x03,0,0))
 
