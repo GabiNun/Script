@@ -4,7 +4,7 @@ irm https://gist.github.com/GabiNun/329c01be57d546e5c8942861cb538e94/raw/Uninsta
 (irm https://github.com/ChrisTitusTech/winutil/raw/main/config/tweaks.json).WPFTweaksRevertStartMenu.InvokeScript | iex
 
 winget source remove msstore | Out-Null
-OneDriveSetup /uninstall
+OneDriveSetup -uninstall
 
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\Accessibility"
 attrib +h "$Env:AppData\Microsoft\Windows\Start Menu\Programs\File Explorer.lnk"
