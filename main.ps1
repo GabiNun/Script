@@ -29,11 +29,6 @@ attrib -h $Home\AppData
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String 'Power Scheme GUID').Line.Split()[3]
 
-$Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
-$Sid = (Get-LocalUser $Env:UserName).Sid.Value
-
-New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
-
 $Packages =
     'Microsoft.WindowsCalculator',
     'Microsoft.WindowsCamera',
@@ -86,5 +81,6 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
 
 
