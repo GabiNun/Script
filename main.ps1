@@ -1,5 +1,6 @@
 irm https://github.com/GabiNun/script/raw/main/Registry.ps1 | iex | Out-Null
 irm https://github.com/GabiNun/script/raw/main/Glazewm/Glazewm.ps1 | iex
+irm https://gist.github.com/GabiNun/329c01be57d546e5c8942861cb538e94/raw/UninstallEdge.ps1 | iex | Out-Null
 (irm https://github.com/ChrisTitusTech/winutil/raw/main/config/tweaks.json).WPFTweaksRevertStartMenu.InvokeScript | iex
 
 winget source remove msstore | Out-Null
@@ -31,8 +32,6 @@ $Appx = (Get-AppxPackage *SecHealthUI).PackageFullName
 $Sid = (Get-LocalUser $Env:UserName).Sid.Value
 
 New-Item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\EndOfLife\$Sid\$Appx -Force | Out-Null
-
-irm https://gist.github.com/GabiNun/329c01be57d546e5c8942861cb538e94/raw/UninstallEdge.ps1 | iex | Out-Null
 
 OneDriveSetup -uninstall
 
@@ -88,3 +87,4 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
