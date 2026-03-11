@@ -29,6 +29,9 @@ attrib -h $Home\AppData
 powercfg /Hibernate Off
 powercfg /Setactive (powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Select-String 'Power Scheme GUID').Line.Split()[3]
 
+Stop-Process -Name SearchHost,*Edge* -Force
+Remove-Item 'C:\Program Files (x86)\Microsoft' -Recurse -Force
+
 $Packages =
     'Microsoft.WindowsCalculator',
     'Microsoft.WindowsCamera',
@@ -81,3 +84,4 @@ Disable-ComputerRestore $Env:SystemDrive
 Invoke-WebRequest -Uri https://github.com/Raphire/Win11Debloat/raw/master/Assets/Start/start2.bin -OutFile $Env:LocalAppData\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin
 
 Stop-Process -Name explorer
+
